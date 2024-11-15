@@ -4,17 +4,18 @@
   },
   "name": "machu_picchu",
   "version": "1.0.0",
-  "main": "index.js",
   "devDependencies": {
+    "fs-extra": "^11.2.0",
+    "html-minifier": "^4.0.0",
     "http-server": "^14.1.1",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.1.0"
+    "rimraf": "^3.0.2"
   },
   "scripts": {
-    "build": "webpack --mode production",
     "start": "http-server .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && npm run create-dist && npm run minify",
+    "clean": "rimraf ./dist",
+    "create-dist": "node -e \"require('fs-extra').mkdirSync('./dist', { recursive: true });\"",
+    "minify": "html-minifier ./index.html --output ./dist/index.html --collapse-whitespace --remove-comments --minify-css true --minify-js true"
   },
   "keywords": [],
   "author": "",
