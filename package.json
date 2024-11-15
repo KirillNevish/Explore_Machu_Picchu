@@ -15,7 +15,7 @@
     "build": "npm run clean && npm run create-dist && npm run copy-files && npm run minify",
     "clean": "rimraf ./dist",
     "create-dist": "node -e \"require('fs-extra').mkdirSync('./dist', { recursive: true });\"",
-    "copy-files": "node -e \"require('fs-extra').copySync('styles/style.css', './dist/styles/style.css'); require('fs-extra').copySync('js/main.js', './dist/js/main.js');\"",
+    "copy-files": "node -e \"require('fs-extra').copySync('styles/style.css', './dist/styles/style.css'); require('fs-extra').copySync('js/main.js', './dist/js/main.js'); require('fs-extra').copySync('img', './dist/img');\"",
     "minify": "html-minifier ./index.html --output ./dist/index.html --collapse-whitespace --remove-comments --minify-css true --minify-js true"
   },
   "keywords": [],
